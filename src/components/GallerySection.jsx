@@ -8,41 +8,61 @@ import { useState } from 'react';
 const GallerySection = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  // Datos de la galería (imágenes y videos placeholder)
+  // Datos de la galería (imágenes reales del proceso)
   const galleryItems = [
     {
       id: 1,
       type: 'image',
+      src: '/imagenes/proceso1.jpg',
       title: 'Proceso de Elaboración',
       description: 'Detrás de escena: elaborando con amor cada producto',
     },
     {
       id: 2,
       type: 'image',
+      src: '/imagenes/proceso2.jpg',
       title: 'Ingredientes Frescos',
       description: 'Seleccionamos los mejores ingredientes naturales',
     },
     {
       id: 3,
-      type: 'video',
+      type: 'image',
+      src: '/imagenes/proceso3.jpg',
       title: 'Cocina Artesanal',
       description: 'Proceso artesanal de principio a fin',
     },
     {
       id: 4,
       type: 'image',
-      title: 'Productos Terminados',
-      description: 'El resultado de nuestro trabajo con dedicación',
+      src: '/imagenes/proceso4.jpg',
+      title: 'Preparación Cuidadosa',
+      description: 'Cada detalle importa en nuestros productos',
     },
     {
       id: 5,
       type: 'image',
-      title: 'Empaque con Amor',
-      description: 'Cada detalle cuenta en nuestros productos',
+      src: '/imagenes/proceso5.jpg',
+      title: 'Productos Terminados',
+      description: 'El resultado de nuestro trabajo con dedicación',
     },
     {
       id: 6,
       type: 'image',
+      src: '/imagenes/proceso6.jpg',
+      title: 'Empaque con Amor',
+      description: 'Cada detalle cuenta en nuestros productos',
+    },
+    {
+      id: 7,
+      type: 'image',
+      src: '/imagenes/proceso7.jpg',
+      title: 'Variedad Saludable',
+      description: 'Múltiples opciones para tu bienestar',
+    },
+    {
+      id: 8,
+      type: 'image',
+      src: '/imagenes/proceso8.jpg',
       title: 'Felicidad Compartida',
       description: 'La sonrisa de nuestros clientes es nuestra recompensa',
     },
@@ -92,30 +112,23 @@ const GallerySection = () => {
                     index === currentIndex ? 'opacity-100' : 'opacity-0'
                   }`}
                 >
-                  {/* Placeholder para imagen/video */}
-                  <div className="w-full h-full bg-gradient-to-br from-green-medium/20 to-primary-green/20 flex flex-col items-center justify-center p-8">
-                    {item.type === 'video' ? (
-                      <svg
-                        className="w-32 h-32 text-primary-green opacity-40 mb-6"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"
-                        />
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                        />
-                      </svg>
-                    ) : (
+                  {/* Imagen real del proceso */}
+                  {item.type === 'image' && item.src ? (
+                    <img 
+                      src={item.src} 
+                      alt={item.title}
+                      className="w-full h-full object-cover"
+                    />
+                  ) : item.type === 'video' && item.src ? (
+                    <video 
+                      src={item.src}
+                      className="w-full h-full object-cover"
+                      controls
+                      loop
+                      playsInline
+                    />
+                  ) : (
+                    <div className="w-full h-full bg-gradient-to-br from-green-medium/20 to-primary-green/20 flex flex-col items-center justify-center p-8">
                       <svg
                         className="w-32 h-32 text-primary-green opacity-40 mb-6"
                         fill="none"
@@ -130,17 +143,11 @@ const GallerySection = () => {
                           d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
                         />
                       </svg>
-                    )}
-                    <h3 className="text-2xl font-bold text-primary-dark mb-2 text-center">
-                      {item.title}
-                    </h3>
-                    <p className="text-gray-600 text-center max-w-md">
-                      {item.description}
-                    </p>
-                    <p className="text-xs text-gray-400 mt-4">
-                      [{item.type === 'video' ? 'Video' : 'Imagen'} del producto o proceso]
-                    </p>
-                  </div>
+                      <p className="text-primary-dark text-sm font-medium">
+                        [Imagen del proceso]
+                      </p>
+                    </div>
+                  )}
 
                   {/* Overlay gradiente */}
                   <div className="absolute inset-0 bg-gradient-to-t from-primary-dark/60 via-transparent to-transparent pointer-events-none"></div>
@@ -227,27 +234,35 @@ const GallerySection = () => {
                     : 'hover:scale-105 hover:shadow-md opacity-70 hover:opacity-100'
                 }`}
               >
-                <div className="w-full h-full bg-gradient-to-br from-green-medium/20 to-primary-green/20 flex items-center justify-center">
-                  {item.type === 'video' ? (
-                    <svg
-                      className="w-8 h-8 text-primary-green opacity-60"
-                      fill="currentColor"
-                      viewBox="0 0 24 24"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
-                    </svg>
-                  ) : (
-                    <svg
-                      className="w-8 h-8 text-primary-green opacity-60"
-                      fill="currentColor"
-                      viewBox="0 0 24 24"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                    </svg>
-                  )}
-                </div>
+                {item.src ? (
+                  <img 
+                    src={item.src} 
+                    alt={item.title}
+                    className="w-full h-full object-cover"
+                  />
+                ) : (
+                  <div className="w-full h-full bg-gradient-to-br from-green-medium/20 to-primary-green/20 flex items-center justify-center">
+                    {item.type === 'video' ? (
+                      <svg
+                        className="w-8 h-8 text-primary-green opacity-60"
+                        fill="currentColor"
+                        viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
+                      </svg>
+                    ) : (
+                      <svg
+                        className="w-8 h-8 text-primary-green opacity-60"
+                        fill="currentColor"
+                        viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                      </svg>
+                    )}
+                  </div>
+                )}
               </button>
             ))}
           </div>

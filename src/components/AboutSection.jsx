@@ -8,33 +8,21 @@ const AboutSection = () => {
     <section id="about" className="py-20 bg-white">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
-          {/* Imagen/Video placeholder */}
+          {/* Video del emprendimiento */}
           <div className="order-2 lg:order-1">
             <div className="relative rounded-2xl overflow-hidden shadow-2xl group">
-              {/* Placeholder - reemplazar con imagen o video real */}
-              <div className="aspect-square bg-gradient-to-br from-green-medium/20 to-primary-green/20 flex items-center justify-center">
-                <div className="text-center p-8">
-                  <svg
-                    className="w-24 h-24 mx-auto text-primary-green opacity-50 mb-4"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                    />
-                  </svg>
-                  <p className="text-primary-dark text-sm font-medium">
-                    [Imagen/Video de la cocina o productos]
-                  </p>
-                </div>
-              </div>
+              {/* Video real */}
+              <video 
+                className="w-full h-full object-cover aspect-square"
+                controls
+                loop 
+                playsInline
+              >
+                <source src="/videos/video1.mp4" type="video/mp4" />
+                Tu navegador no soporta el elemento de video.
+              </video>
               {/* Overlay decorativo */}
-              <div className="absolute inset-0 bg-gradient-to-t from-primary-dark/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              <div className="absolute inset-0 bg-gradient-to-t from-primary-dark/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
             </div>
           </div>
 

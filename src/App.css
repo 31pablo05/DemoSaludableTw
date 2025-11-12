@@ -1,0 +1,10 @@
+/* App.css - Estilos adicionales para la landing page */
+
+/* Resetear estilos del template default */
+#root {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* Estilos personalizados si se necesitan más adelante */
